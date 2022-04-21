@@ -31,15 +31,7 @@ $company_migration_result = @pg_exec($connection, "create table company(id seria
 
 $command = $_GET['option'];
 
-function create_person($connection, $person_first_name, $person_last_name)
-{
-    pg_exec($connection, "insert into people(first_name, last_name) values ('$person_first_name', '$person_last_name')");
-}
-
-function create_company($connection, $company_name)
-{
-    pg_exec($connection, "insert into company(name) values ('$company_name')");
-}
+require "functions.php";
 
 if ($command == "person:create") {
     $person_first_name = $_GET['first_name'];
