@@ -22,19 +22,20 @@ require "migrations.php";
 $command = $argv[1];
 
 require "functions.php";
-require "DAO/Person.php";
-require "BO/Person.php";
 require "DAO/Company.php";
+require "Controllers/Person.php";
 
-$personDao = new DAO\Person($connection);
 $companyDao = new DAO\Company($connection);
 
 if ($command == "person:create") {
-    require "Controllers/person_store.php";
+    $controller = new \Controllers\Person();
+    $controller->store();
 } elseif ($command == "person:show") {
-    require "Controllers/person_show.php";
+    $controller = new \Controllers\Person();
+    $controller->show();
 } elseif ($command == "person:update") {
-    require "Controllers/person_update.php";
+    $controller = new \Controllers\Person();
+    $controller->update();
 } elseif ($command == "company:create") {
     $company = new \BO\Company();
     $company->name = $argv[2];
