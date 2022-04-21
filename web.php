@@ -10,3 +10,19 @@
  *
  * php -S localhost:8025
  */
+
+
+/*
+ * localhost:8025/web.php?option=person:create&first_name=First Name&last_name=Last Name
+ * $_GET['option'] => "person:create"
+ * $_GET['first_name'] => "First Name"
+ * $_GET['last_name'] => "Last Name"
+ */
+
+/*
+ * localhost:8025/web.ph?option=company:create&name=Name
+ * $_GET['option'] => "company:create"
+ * $_GET['name'] => "Name"
+ */
+
+$command = $_GET['option'];
