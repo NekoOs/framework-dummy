@@ -23,20 +23,20 @@ $command = $argv[1];
 
 require "functions.php";
 
-$person = new Person();
+$person = new Person($connection);
 
 if ($command == "person:create") {
     $person_first_name = $argv[2];
     $person_last_name = $argv[3];
-    $person->create($connection, $person_first_name, $person_last_name);
+    $person->create($person_first_name, $person_last_name);
 } elseif ($command == "person:show") {
     $id = $argv[2];
-    var_dump($person->find($connection, $id));
+    var_dump($person->find($id));
 } elseif ($command == "person:update") {
     $id = $argv[2];
     $person_first_name = $argv[3];
     $person_last_name = $argv[4];
-    $person->update($connection, $id, ['first_name' => $person_first_name, 'last_name' => $person_last_name]);
+    $person->update($id, ['first_name' => $person_first_name, 'last_name' => $person_last_name]);
 } elseif ($command == "company:create") {
     $company_name = $argv[2];
     create_company($connection, $company_name);
