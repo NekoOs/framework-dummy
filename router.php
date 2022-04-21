@@ -21,7 +21,7 @@ require "migrations.php";
  * $argv[2] => "Name"
  */
 
-$command = $argv[1];
+$command = $argv[1] ?? $_GET['option'];
 
 require "functions.php";
 require "Controllers/Company.php";
@@ -33,13 +33,13 @@ if ($command == "person:create") {
     $controller->store();
 } elseif ($command == "person:show") {
     $controller = new Person();
-    $controller->show($argv[2]);
+    $controller->show($argv[2] ?? $_GET['id']);
 } elseif ($command == "person:update") {
     $controller = new Person();
     $controller->update([
-        'id'         => $argv[2],
-        'first_name' => $argv[3],
-        'last_name'  => $argv[4],
+        'id'         => $argv[2] ?? $_GET['id'],
+        'firstName' => $argv[3] ?? $_GET['firstName'],
+        'lastName'  => $argv[4] ?? $_GET['lastName'],
     ]);
 } elseif ($command == "company:create") {
     $controller = new Company();

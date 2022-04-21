@@ -46,8 +46,8 @@ class Person
     
         $person = new \BO\Person();
         $id = $request['id'];
-        $person->firstName = $request['first_name'];
-        $person->lastName = $request['last_name'];
+        $person->firstName = $request['firstName'];
+        $person->lastName = $request['lastName'];
         $personDao->update($id, $person);
         require 'views/person_show.php';
     }
