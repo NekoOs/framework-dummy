@@ -26,22 +26,22 @@ require "DAO/Person.php";
 require "BO/Person.php";
 require "DAO/Company.php";
 
-$person = new DAO\Person($connection);
+$personDao = new DAO\Person($connection);
 
 if ($command == "person:create") {
-    $new = new BO\Person();
-    $new->firstName = $argv[2];
-    $new->lastName = $argv[3];
-    $person->create($new);
+    $person = new BO\Person();
+    $person->firstName = $argv[2];
+    $person->lastName = $argv[3];
+    $personDao->create($person);
 } elseif ($command == "person:show") {
     $id = $argv[2];
-    var_dump($person->find($id));
+    var_dump($personDao->find($id));
 } elseif ($command == "person:update") {
-    $update = new \BO\Person();
+    $person = new \BO\Person();
     $id = $argv[2];
-    $update->firstName = $argv[3];
-    $update->lastName = $argv[4];
-    $person->update($id, $update);
+    $person->firstName = $argv[3];
+    $person->lastName = $argv[4];
+    $personDao->update($id, $person);
 } elseif ($command == "company:create") {
     $company_name = $argv[2];
     create_company($connection, $company_name);
