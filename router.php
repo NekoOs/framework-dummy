@@ -30,7 +30,10 @@ require "Repositories/Person.php";
 
 if ($command == "person:create") {
     $controller = new Person();
-    $controller->store();
+    $controller->store([
+        'firstName' => $argv[3] ?? $_GET['firstName'],
+        'lastName'  => $argv[4] ?? $_GET['lastName'],
+    ]);
 } elseif ($command == "person:show") {
     $controller = new Person();
     $controller->show($argv[2] ?? $_GET['id']);
@@ -43,7 +46,9 @@ if ($command == "person:create") {
     ]);
 } elseif ($command == "company:create") {
     $controller = new Company();
-    $controller->create();
+    $controller->store([
+        'name' => $argv[2] ?? $_GET['name']
+    ]);
 } else {
     echo "The command '$command' not found.".PHP_EOL;
 }

@@ -4,13 +4,12 @@ namespace Repositories;
 
 class Company
 {
-    public function create()
+    public function store($request)
     {
-        global $argv;
         $connection = require "connection.php";
-        $companyDao = new DAO\Company($connection);
+        $companyDao = new \DAO\Company($connection);
         $company = new \BO\Company();
-        $company->name = $argv[2];
-        $companyDao->create($connection, $company);
+        $company->name = $request['name'];
+        $companyDao->create($company);
     }
 }

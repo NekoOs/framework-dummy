@@ -18,7 +18,7 @@ class Person
         require 'views/person_show.php';
     }
     
-    function store()
+    function store($request)
     {
         global $argv;
         
@@ -30,7 +30,10 @@ class Person
         $personDao = new \DAO\Person($connection);
         
         $id = $argv[1];
-        $person = $personDao->find($id);
+        $person = new \BO\Person();
+        $person->firstName = $request['firstName'];
+        $person->lastName = $request['lastName'];
+        $personDao->create($person);
         
         require 'views/person_show.php';
     }
