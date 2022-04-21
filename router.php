@@ -14,25 +14,16 @@ require "Repositories/Person.php";
 
 if ($command == "person:create") {
     $controller = new Person();
-    $controller->store([
-        'firstName' => $_GET['firstName'],
-        'lastName'  => $_GET['lastName'],
-    ]);
+    $controller->store($_GET);
 } elseif ($command == "person:show") {
     $controller = new Person();
     $controller->show($_GET['id']);
 } elseif ($command == "person:update") {
     $controller = new Person();
-    $controller->update([
-        'id'         => $_GET['id'],
-        'firstName' => $_GET['firstName'],
-        'lastName'  => $_GET['lastName'],
-    ]);
+    $controller->update($_GET);
 } elseif ($command == "company:create") {
     $controller = new Company();
-    $controller->store([
-        'name' => $_GET['name']
-    ]);
+    $controller->store($_GET);
 } else {
     echo "The command '$command' not found.".PHP_EOL;
 }
