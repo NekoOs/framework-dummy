@@ -30,9 +30,7 @@ if ($command == "person:create") {
     if ($command == "company:create") {
         $company_name = $argv[2];
         pg_exec($connection, "insert into company(name) values ('$company_name')");
-    } else {
-        if ($command != "people:create") {
-            echo "The command '$command' not found.". PHP_EOL;
-        }
+    } elseif ($command != "people:create") {
+        echo "The command '$command' not found.". PHP_EOL;
     }
 }
