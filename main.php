@@ -23,14 +23,16 @@ $command = $argv[1];
 
 require "functions.php";
 require "DAO/Person.php";
+require "BO/Person.php";
 require "DAO/Company.php";
 
-$person = new Person($connection);
+$person = new DAO\Person($connection);
 
 if ($command == "person:create") {
-    $person_first_name = $argv[2];
-    $person_last_name = $argv[3];
-    $person->create($person_first_name, $person_last_name);
+    $new = new BO\Person();
+    $new->firstName = $argv[2];
+    $new->lastName = $argv[3];
+    $person->create($new->firstName, $new->lastName);
 } elseif ($command == "person:show") {
     $id = $argv[2];
     var_dump($person->find($id));

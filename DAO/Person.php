@@ -1,5 +1,7 @@
 <?php
 
+namespace DAO;
+
 class Person {
     private $connection;
     
