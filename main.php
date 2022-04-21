@@ -32,7 +32,7 @@ if ($command == "person:create") {
     $new = new BO\Person();
     $new->firstName = $argv[2];
     $new->lastName = $argv[3];
-    $person->create($new->firstName, $new->lastName);
+    $person->create($new);
 } elseif ($command == "person:show") {
     $id = $argv[2];
     var_dump($person->find($id));

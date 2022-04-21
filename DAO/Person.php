@@ -9,9 +9,9 @@ class Person {
         $this->connection = $connection;
     }
     
-    function create($person_first_name, $person_last_name)
+    function create(\BO\Person $person)
     {
-        pg_exec($this->connection, "insert into people(first_name, last_name) values ('$person_first_name', '$person_last_name')");
+        pg_exec($this->connection, "insert into people(first_name, last_name) values ('$person->firstName', '$person->lastName')");
     }
     
     function find($id)
