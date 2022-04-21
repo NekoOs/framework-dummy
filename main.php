@@ -37,10 +37,11 @@ if ($command == "person:create") {
     $id = $argv[2];
     var_dump($person->find($id));
 } elseif ($command == "person:update") {
+    $update = new \BO\Person();
     $id = $argv[2];
-    $person_first_name = $argv[3];
-    $person_last_name = $argv[4];
-    $person->update($id, ['first_name' => $person_first_name, 'last_name' => $person_last_name]);
+    $update->firstName = $argv[3];
+    $update->lastName = $argv[4];
+    $person->update($id, $update);
 } elseif ($command == "company:create") {
     $company_name = $argv[2];
     create_company($connection, $company_name);

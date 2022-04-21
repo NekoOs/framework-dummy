@@ -21,10 +21,8 @@ class Person {
         return pg_fetch_row($resource);
     }
     
-    function update($id, $fields)
+    function update($id, \BO\Person $person)
     {
-        $first_name = $fields['first_name'];
-        $last_name = $fields['last_name'];
-        pg_exec($this->connection, "update people set first_name='$first_name', last_name='$last_name' where id = '$id'");
+        pg_exec($this->connection, "update people set first_name='$person->firstName', last_name='$person->lastName' where id = '$id'");
     }
 }
