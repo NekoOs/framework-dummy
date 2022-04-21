@@ -1,8 +1,8 @@
 <?php
 
 
-use Controllers\Company;
-use Controllers\Person;
+use Repositories\Company;
+use Repositories\Person;
 
 require "migrations.php";
 
@@ -24,8 +24,8 @@ require "migrations.php";
 $command = $argv[1] ?? $_GET['option'];
 
 require "functions.php";
-require "Controllers/Company.php";
-require "Controllers/Person.php";
+require "Repositories/Company.php";
+require "Repositories/Person.php";
 
 
 if ($command == "person:create") {
