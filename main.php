@@ -34,5 +34,5 @@ if ($command == "company:create") {
 }
 
 if ($command != "company:create" && $command != "people:create") {
-    echo "The command '$command' not found.";
+    echo "The command '$command' not found.". PHP_EOL;
 }
