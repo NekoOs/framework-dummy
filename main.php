@@ -6,16 +6,19 @@ $people_migration_result = @pg_exec($connection, "create table people(id serial,
 $company_migration_result = @pg_exec($connection, "create table company(id serial, name varchar(50))");
 
 /*
- * php main.php "Company Name Example" "Neder" "Fandiño"
+ * php main.php "person:create" "First Name" "Last Name"
  * $argv[0] => "main.php"
- * $argv[1] => "Company Name Example"
- * $argv[2] => "Neder"
- * $argv[3] => "Fandiño"
+ * $argv[1] => "person:create"
+ * $argv[2] => "First Name"
+ * $argv[3] => "Last Name"
  */
 
-$company_name = $argv[1];
-$person_first_name = $argv[2];
-$person_last_name = $argv[3];
+$command = $argv[1];
 
-pg_exec($connection, "insert into company(name) values ('$company_name')");
-pg_exec($connection, "insert into people(first_name, last_name) values ('$person_first_name', '$person_last_name')");
+if ($command == "person:create") {
+    $person_first_name = $argv[2];
+    $person_last_name = $argv[3];
+    pg_exec($connection, "insert into people(first_name, last_name) values ('$person_first_name', '$person_last_name')");
+}
+
+//pg_exec($connection, "insert into company(name) values ('$company_name')");
