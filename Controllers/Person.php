@@ -4,10 +4,8 @@ namespace Controllers;
 
 class Person
 {
-    function show()
+    function show($id)
     {
-        global $argv;
-    
         require "DAO/Person.php";
         require "BO/Person.php";
     
@@ -15,7 +13,6 @@ class Person
     
         $personDao = new \DAO\Person($connection);
     
-        $id = $argv[2];
         $person = $personDao->find($id);
     
         require 'views/person_show.php';

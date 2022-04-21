@@ -31,7 +31,7 @@ if ($command == "person:create") {
     $controller->store();
 } elseif ($command == "person:show") {
     $controller = new \Controllers\Person();
-    $controller->show();
+    $controller->show($argv[2]);
 } elseif ($command == "person:update") {
     $controller = new \Controllers\Person();
     $controller->update();
