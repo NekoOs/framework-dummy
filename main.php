@@ -22,6 +22,7 @@ require "migrations.php";
 $command = $argv[1];
 
 require "functions.php";
+require "Person.php";
 
 $person = new Person($connection);
 
