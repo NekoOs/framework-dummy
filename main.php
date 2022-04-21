@@ -34,6 +34,9 @@ if ($command == "person:create") {
     $person->firstName = $argv[2];
     $person->lastName = $argv[3];
     $personDao->create($person);
+    echo "-------------- PERSON ---------------" . PHP_EOL;
+    echo "FIRST NAME: $person->firstName" . PHP_EOL;
+    echo "LAST NAME: $person->lastName" . PHP_EOL;
 } elseif ($command == "person:show") {
     $id = $argv[2];
     var_dump($personDao->find($id));
