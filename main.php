@@ -22,8 +22,8 @@ require "migrations.php";
 $command = $argv[1];
 
 require "functions.php";
-require "Person.php";
-require "Company.php";
+require "DAO/Person.php";
+require "DAO/Company.php";
 
 $person = new Person($connection);
 
