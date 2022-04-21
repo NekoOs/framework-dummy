@@ -27,6 +27,7 @@ require "BO/Person.php";
 require "DAO/Company.php";
 
 $personDao = new DAO\Person($connection);
+$companyDao = new DAO\Company($connection);
 
 if ($command == "person:create") {
     $person = new BO\Person();
@@ -43,8 +44,9 @@ if ($command == "person:create") {
     $person->lastName = $argv[4];
     $personDao->update($id, $person);
 } elseif ($command == "company:create") {
-    $company_name = $argv[2];
-    create_company($connection, $company_name);
+    $company = new \BO\Company();
+    $company->name = $argv[2];
+    $companyDao->create($connection, $company);
 } else {
     echo "The command '$command' not found.".PHP_EOL;
 }

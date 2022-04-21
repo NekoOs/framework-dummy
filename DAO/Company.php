@@ -1,5 +1,7 @@
 <?php
 
+namespace DAO;
+
 class Company
 {
     protected $connection;
@@ -9,8 +11,8 @@ class Company
         $this->connection = $connection;
     }
     
-    function create($company_name)
+    function create($company)
     {
-        pg_exec($this->connection, "insert into company(name) values ('$company_name')");
+        pg_exec($this->connection, "insert into company(name) values ('$company->name')");
     }
 }
