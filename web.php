@@ -13,8 +13,7 @@
 
 $connection = require "connection.php";
 
-$people_migration_result = @pg_exec($connection, "create table people(id serial, first_name varchar(50), last_name varchar(50))");
-$company_migration_result = @pg_exec($connection, "create table company(id serial, name varchar(50))");
+require "migrations.php";
 
 /*
  * localhost:8025/web.php?option=person:create&first_name=First Name&last_name=Last Name
