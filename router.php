@@ -1,6 +1,8 @@
 <?php
 
 
+use Controllers\Company;
+use Controllers\Person;
 
 require "migrations.php";
 
@@ -27,16 +29,20 @@ require "Controllers/Person.php";
 
 
 if ($command == "person:create") {
-    $controller = new \Controllers\Person();
+    $controller = new Person();
     $controller->store();
 } elseif ($command == "person:show") {
-    $controller = new \Controllers\Person();
+    $controller = new Person();
     $controller->show($argv[2]);
 } elseif ($command == "person:update") {
-    $controller = new \Controllers\Person();
-    $controller->update();
+    $controller = new Person();
+    $controller->update([
+        'id'         => $argv[2],
+        'first_name' => $argv[3],
+        'last_name'  => $argv[4],
+    ]);
 } elseif ($command == "company:create") {
-    $controller = new \Controllers\Company();
+    $controller = new Company();
     $controller->create();
 } else {
     echo "The command '$command' not found.".PHP_EOL;

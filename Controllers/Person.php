@@ -35,10 +35,8 @@ class Person
         require 'views/person_show.php';
     }
     
-    function update()
+    function update($request)
     {
-        global $argv;
-    
         require "DAO/Person.php";
         require "BO/Person.php";
     
@@ -47,9 +45,9 @@ class Person
         $personDao = new \DAO\Person($connection);
     
         $person = new \BO\Person();
-        $id = $argv[2];
-        $person->firstName = $argv[3];
-        $person->lastName = $argv[4];
+        $id = $request['id'];
+        $person->firstName = $request['first_name'];
+        $person->lastName = $request['last_name'];
         $personDao->update($id, $person);
         require 'views/person_show.php';
     }
