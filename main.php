@@ -23,6 +23,7 @@ $command = $argv[1];
 
 require "functions.php";
 require "Person.php";
+require "Company.php";
 
 $person = new Person($connection);
 
