@@ -26,11 +26,9 @@ if ($command == "person:create") {
     $person_first_name = $argv[2];
     $person_last_name = $argv[3];
     pg_exec($connection, "insert into people(first_name, last_name) values ('$person_first_name', '$person_last_name')");
-} else {
-    if ($command == "company:create") {
-        $company_name = $argv[2];
-        pg_exec($connection, "insert into company(name) values ('$company_name')");
-    } elseif ($command != "people:create") {
-        echo "The command '$command' not found.". PHP_EOL;
-    }
+} elseif ($command == "company:create") {
+    $company_name = $argv[2];
+    pg_exec($connection, "insert into company(name) values ('$company_name')");
+} elseif ($command != "people:create") {
+    echo "The command '$command' not found.".PHP_EOL;
 }
