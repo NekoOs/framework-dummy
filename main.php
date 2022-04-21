@@ -34,9 +34,7 @@ if ($command == "person:create") {
     $person->firstName = $argv[2];
     $person->lastName = $argv[3];
     $personDao->create($person);
-    echo "-------------- PERSON ---------------" . PHP_EOL;
-    echo "FIRST NAME: $person->firstName" . PHP_EOL;
-    echo "LAST NAME: $person->lastName" . PHP_EOL;
+    require 'views/person_show.php';
 } elseif ($command == "person:show") {
     $id = $argv[2];
     var_dump($personDao->find($id));
@@ -46,6 +44,7 @@ if ($command == "person:create") {
     $person->firstName = $argv[3];
     $person->lastName = $argv[4];
     $personDao->update($id, $person);
+    require 'views/person_show.php';
 } elseif ($command == "company:create") {
     $company = new \BO\Company();
     $company->name = $argv[2];
