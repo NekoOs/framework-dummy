@@ -15,7 +15,7 @@ class Person
     
         $personDao = new \DAO\Person($connection);
     
-        $id = $argv[1];
+        $id = $argv[2];
         $person = $personDao->find($id);
     
         require 'views/person_show.php';
