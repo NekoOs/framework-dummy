@@ -1,6 +1,6 @@
 <?php
 
-$connection = require "connection.php";
+
 
 require "migrations.php";
 
@@ -22,10 +22,9 @@ require "migrations.php";
 $command = $argv[1];
 
 require "functions.php";
-require "DAO/Company.php";
+require "Controllers/Company.php";
 require "Controllers/Person.php";
 
-$companyDao = new DAO\Company($connection);
 
 if ($command == "person:create") {
     $controller = new \Controllers\Person();
@@ -37,9 +36,8 @@ if ($command == "person:create") {
     $controller = new \Controllers\Person();
     $controller->update();
 } elseif ($command == "company:create") {
-    $company = new \BO\Company();
-    $company->name = $argv[2];
-    $companyDao->create($connection, $company);
+    $controller = new \Controllers\Company();
+    $controller->create();
 } else {
     echo "The command '$command' not found.".PHP_EOL;
 }
