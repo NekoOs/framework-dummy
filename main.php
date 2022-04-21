@@ -22,13 +22,23 @@ $company_migration_result = @pg_exec($connection, "create table company(id seria
 
 $command = $argv[1];
 
+function create_person($connection, $person_first_name, $person_last_name)
+{
+    pg_exec($connection, "insert into people(first_name, last_name) values ('$person_first_name', '$person_last_name')");
+}
+
+function create_company($connection, $company_name)
+{
+    pg_exec($connection, "insert into company(name) values ('$company_name')");
+}
+
 if ($command == "person:create") {
     $person_first_name = $argv[2];
     $person_last_name = $argv[3];
-    pg_exec($connection, "insert into people(first_name, last_name) values ('$person_first_name', '$person_last_name')");
+    create_person($connection, $person_first_name, $person_last_name);
 } elseif ($command == "company:create") {
     $company_name = $argv[2];
-    pg_exec($connection, "insert into company(name) values ('$company_name')");
+    create_company($connection, $company_name);
 } else {
     echo "The command '$command' not found.".PHP_EOL;
 }
