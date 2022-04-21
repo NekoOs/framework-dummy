@@ -30,11 +30,11 @@ $personDao = new DAO\Person($connection);
 $companyDao = new DAO\Company($connection);
 
 if ($command == "person:create") {
-    require "person_store.php";
+    require "Controllers/person_store.php";
 } elseif ($command == "person:show") {
-    require "person_show.php";
+    require "Controllers/person_show.php";
 } elseif ($command == "person:update") {
-    require "person_update.php";
+    require "Controllers/person_update.php";
 } elseif ($command == "company:create") {
     $company = new \BO\Company();
     $company->name = $argv[2];
