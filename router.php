@@ -1,9 +1,5 @@
 <?php
 
-
-use Repositories\Company;
-use Repositories\Person;
-
 require "migrations.php";
 
 error_reporting(E_ALL);
@@ -16,7 +12,7 @@ $controller = $array[0];
 $method = $array[1];
 
 $routes = [
-    'person' => Repositories\Person::class,
+    'person'  => Repositories\Person::class,
     'company' => Repositories\Company::class,
 ];
 
