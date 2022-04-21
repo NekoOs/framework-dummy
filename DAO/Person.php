@@ -18,7 +18,15 @@ class Person {
     {
         $resource = pg_exec($this->connection, "select * from people where id = '$id'");
         
-        return pg_fetch_row($resource);
+        $data = pg_fetch_assoc($resource);
+        
+        $person = new \BO\Person();
+        
+        $person->id = $data['id'];
+        $person->firstName = $data['first_name'];
+        $person->lastName = $data['last_name'];
+        
+        return $person;
     }
     
     function update($id, \BO\Person $person)

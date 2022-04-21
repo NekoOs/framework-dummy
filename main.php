@@ -30,21 +30,11 @@ $personDao = new DAO\Person($connection);
 $companyDao = new DAO\Company($connection);
 
 if ($command == "person:create") {
-    $person = new BO\Person();
-    $person->firstName = $argv[2];
-    $person->lastName = $argv[3];
-    $personDao->create($person);
-    require 'views/person_show.php';
+    require "person_store.php";
 } elseif ($command == "person:show") {
-    $id = $argv[2];
-    var_dump($personDao->find($id));
+    require "person_show.php";
 } elseif ($command == "person:update") {
-    $person = new \BO\Person();
-    $id = $argv[2];
-    $person->firstName = $argv[3];
-    $person->lastName = $argv[4];
-    $personDao->update($id, $person);
-    require 'views/person_show.php';
+    require "person_update.php";
 } elseif ($command == "company:create") {
     $company = new \BO\Company();
     $company->name = $argv[2];
